@@ -3,6 +3,7 @@ package com.googlepages.marpuch.gofinity.gui;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.image.ImageObserver;
@@ -74,15 +75,26 @@ public class GamePanel extends JPanel
 			@Override
 			public void mouseMoved(final MouseEvent e) {
 				e.consume();
-				if (overBoardMarkings == null)
-					return;
-				overBoardMarkings.handleMouseMove(e.getX(), e.getY());
-				if (overBoardMarkings.isChanged()) {
-					repaint();
-				}
+				updateCursorPosition(e.getX(), e.getY());
 			}
-
 		});
+		addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseExited(final MouseEvent e) {
+				e.consume();
+				updateCursorPosition(-1, -1);
+			}
+		});
+	}
+
+	private void updateCursorPosition(final int x, final int y) {
+		if (overBoardMarkings == null)
+			return;
+		overBoardMarkings.handleMouseMove(x, y);
+		if (overBoardMarkings.isChanged()) {
+			repaint();
+		}
 	}
 
 }
