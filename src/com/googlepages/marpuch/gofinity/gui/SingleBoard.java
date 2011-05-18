@@ -15,15 +15,15 @@ public class SingleBoard {
 	private final BoardContent boardContent;
 	private final Graphics2D graphics;
 
-	private final int singleRowHeight;
+	private final int singleRowFieldSize;
 	private final int radius;
 
-	public SingleBoard(final BoardContent boardContent, final int singleRowHeight) {
+	public SingleBoard(final BoardContent boardContent, final int singleFieldSize) {
 		this.boardContent = boardContent;
-		this.singleRowHeight = singleRowHeight;
-		this.radius = singleRowHeight - 1;
+		this.singleRowFieldSize = singleFieldSize;
+		this.radius = singleFieldSize - 1;
 
-		int boardSize = boardContent.getSize() * singleRowHeight;
+		int boardSize = boardContent.getSize() * singleFieldSize;
 		boardImage = new BufferedImage(boardSize, boardSize, BufferedImage.TYPE_INT_RGB);
 		graphics = (Graphics2D) boardImage.getGraphics();
 		drawBoard();
@@ -46,22 +46,22 @@ public class SingleBoard {
 		// TODO localize me
 		graphics.setColor(Color.black);
 		// vertical
-		int xCoordinate = singleRowHeight/2;
+		int xCoordinate = singleRowFieldSize/2;
 		for (int i = 0; i < boardContent.getSize(); i++)
 		{
 			graphics.drawLine(xCoordinate, 0, xCoordinate, boardImage.getHeight());
 			if (i == 0)
 				graphics.drawLine(xCoordinate+1, 0, xCoordinate+1, boardImage.getHeight());
-			xCoordinate += singleRowHeight;
+			xCoordinate += singleRowFieldSize;
 		}
 		// horizontal
-		int yCoordinate = singleRowHeight/2;
+		int yCoordinate = singleRowFieldSize/2;
 		for (int i = 0; i < boardContent.getSize(); i++)
 		{
 			graphics.drawLine(0, yCoordinate, boardImage.getWidth(), yCoordinate);
 			if (i == 0)
 				graphics.drawLine(0, yCoordinate+1, boardImage.getWidth(), yCoordinate+1);
-			yCoordinate += singleRowHeight;
+			yCoordinate += singleRowFieldSize;
 		}
 	}
 
@@ -85,7 +85,7 @@ public class SingleBoard {
 	}
 
 	private int getCoordinate(final int boardPosition) {
-		return boardPosition * singleRowHeight + 1;
+		return boardPosition * singleRowFieldSize + 1;
 	}
 
 	private void drawStoneToImageCoordinates(final int xCoordinate, final int yCoordinate,

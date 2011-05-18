@@ -37,6 +37,30 @@
          <string>orientation</string> 
          <int>1</int> 
         </void> 
+        <void method="setProperty"> 
+         <string>minimum</string> 
+         <int>10</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>value</string> 
+         <int>30</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>snapToTicks</string> 
+         <boolean>true</boolean> 
+        </void> 
+        <void method="setProperty"> 
+         <string>majorTickSpacing</string> 
+         <int>10</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>minorTickSpacing</string> 
+         <int>2</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>paintTicks</string> 
+         <boolean>true</boolean> 
+        </void> 
         <void property="name"> 
          <string>slider1</string> 
         </void> 

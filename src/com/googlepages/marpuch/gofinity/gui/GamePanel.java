@@ -13,10 +13,13 @@ import com.googlepages.marpuch.gofinity.entity.FieldContent;
 
 public class GamePanel extends JPanel
 {
-	private final SingleBoard singleBoard;
+	private SingleBoard singleBoard;
 
 	public GamePanel() {
 		super();
+	}
+
+	public void initSingleBoard(final int singleFieldSize) {
 		// TODO move elsewhere
 		BoardContent bc = new BoardContent(9);
 		bc.setFieldContent(1, 1, FieldContent.WHITE);
@@ -24,7 +27,7 @@ public class GamePanel extends JPanel
 		bc.setFieldContent(0, 4, FieldContent.BLACK);
 		bc.setFieldContent(4, 0, FieldContent.WHITE);
 		bc.setFieldContent(0, 0, FieldContent.WHITE);
-		this.singleBoard = new SingleBoard(bc, 30);
+		this.singleBoard = new SingleBoard(bc, singleFieldSize);
 	}
 
 	@Override
