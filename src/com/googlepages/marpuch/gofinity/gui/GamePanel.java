@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import com.googlepages.marpuch.gofinity.entity.BoardContent;
 import com.googlepages.marpuch.gofinity.entity.FieldContent;
+import com.googlepages.marpuch.gofinity.entity.GameParameters;
 import com.googlepages.marpuch.gofinity.gui.images.AbstractBoardImage;
 import com.googlepages.marpuch.gofinity.gui.images.OverBoardMarkings;
 import com.googlepages.marpuch.gofinity.gui.images.SingleBoard;
@@ -33,8 +34,9 @@ public class GamePanel extends JPanel
 		bc.setFieldContent(0, 4, FieldContent.BLACK);
 		bc.setFieldContent(4, 0, FieldContent.WHITE);
 		bc.setFieldContent(0, 0, FieldContent.WHITE);
-		singleBoard = new SingleBoard(bc, singleFieldSize);
-		overBoardMarkings = new OverBoardMarkings(bc, singleFieldSize);
+		GameParameters gp = new GameParameters();
+		singleBoard = new SingleBoard(bc, gp, singleFieldSize);
+		overBoardMarkings = new OverBoardMarkings(bc, gp, singleFieldSize);
 	}
 
 	@Override

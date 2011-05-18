@@ -1,10 +1,11 @@
 package com.googlepages.marpuch.gofinity.gui.images;
 
-import java.awt.Color;
-
 import lombok.Getter;
 
 import com.googlepages.marpuch.gofinity.entity.BoardContent;
+import com.googlepages.marpuch.gofinity.entity.FieldContent;
+import com.googlepages.marpuch.gofinity.entity.GameParameters;
+import com.googlepages.marpuch.gofinity.entity.Stone;
 
 public class OverBoardMarkings extends AbstractBoardImage {
 
@@ -12,9 +13,9 @@ public class OverBoardMarkings extends AbstractBoardImage {
 	private int oldY = -1;
 	@Getter private boolean changed = false;
 
-	public OverBoardMarkings(final BoardContent boardContent,
+	public OverBoardMarkings(final BoardContent boardContent, final GameParameters gameParameters,
 			final int singleFieldSize) {
-		super(boardContent, singleFieldSize);
+		super(boardContent, gameParameters, singleFieldSize);
 	}
 
 	public void handleMouseMove(final int xCoordinate, final int yCoordinate) {
@@ -28,19 +29,21 @@ public class OverBoardMarkings extends AbstractBoardImage {
 		{
 			oldX = x;
 			oldY = y;
-			drawMousePosition(x, y);
+			handlePositionChanged(x, y);
 			changed = true;
 		}
 	}
 
-	private void drawMousePosition(final int x, final int y) {
+	private void handlePositionChanged(final int x, final int y) {
 		clearImage();
 		// TODO localize me
-		graphics.setColor(Color.red);
-		int xCoordinate = singleFieldSize/2 + x * singleFieldSize;
-		graphics.drawLine(xCoordinate, 0, xCoordinate, boardImage.getHeight());
-		int yCoordinate = singleFieldSize/2 + y * singleFieldSize;
-		graphics.drawLine(0, yCoordinate, boardImage.getWidth(), yCoordinate);
+		if (FieldContent.EMPTY.equals(boardContent.getFieldContent(x, y)))
+		{
+			int xCoordinate = getCoordinate(x);
+			int yCoordinate = getCoordinate(y);
+			FieldContent fc = Stone.toFieldContent(gameParameters.getPlayerToMove());
+			drawStoneToImageCoordinates(xCoordinate, yCoordinate, fc, 0.5f);
+		}
 	}
 
 	private int getBoardCoordinate(final int panelCoordinate) {

@@ -4,14 +4,13 @@ import java.awt.Color;
 
 import com.googlepages.marpuch.gofinity.entity.BoardContent;
 import com.googlepages.marpuch.gofinity.entity.FieldContent;
+import com.googlepages.marpuch.gofinity.entity.GameParameters;
 
 public class SingleBoard extends AbstractBoardImage {
 
-	private final int radius;
-
-	public SingleBoard(final BoardContent boardContent, final int singleFieldSize) {
-		super(boardContent, singleFieldSize);
-		this.radius = singleFieldSize - 1;
+	public SingleBoard(final BoardContent boardContent,
+			final GameParameters gameParameters, final int singleFieldSize) {
+		super(boardContent, gameParameters, singleFieldSize);
 		drawBoard();
 	}
 
@@ -68,29 +67,6 @@ public class SingleBoard extends AbstractBoardImage {
 			int xCoordinate = getCoordinate(x);
 			int yCoordinate = getCoordinate(y);
 			drawStoneToImageCoordinates(xCoordinate, yCoordinate, fieldContent);
-		}
-	}
-
-	private int getCoordinate(final int boardPosition) {
-		return boardPosition * singleFieldSize + 1;
-	}
-
-	private void drawStoneToImageCoordinates(final int xCoordinate, final int yCoordinate,
-			final FieldContent fieldContent) {
-		if (FieldContent.WHITE.equals(fieldContent))
-		{
-			// TODO localize
-			graphics.setColor(Color.white);
-			graphics.fillOval(xCoordinate, yCoordinate, radius, radius);
-			// TODO localize
-			graphics.setColor(Color.black);
-			graphics.drawOval(xCoordinate, yCoordinate, radius, radius);
-		}
-		else
-		{
-			// TODO localize
-			graphics.setColor(Color.black);
-			graphics.fillOval(xCoordinate, yCoordinate, radius, radius);
 		}
 	}
 }
