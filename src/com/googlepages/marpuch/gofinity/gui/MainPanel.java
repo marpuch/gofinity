@@ -1,6 +1,8 @@
 package com.googlepages.marpuch.gofinity.gui;
 
 import java.awt.Dimension;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 
 import javax.swing.JPanel;
 import javax.swing.JSlider;
@@ -24,7 +26,7 @@ public class MainPanel extends JPanel
 {
 	public MainPanel() {
 		initComponents();
-		initBoardSize();
+		initBoardResizing();
 	}
 
 	private void initComponents() {
@@ -67,7 +69,7 @@ public class MainPanel extends JPanel
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents
 	}
 
-	private void initBoardSize() {
+	private void initBoardResizing() {
 		mGamePanel1.initSingleBoard(mSlider1.getValue());
 		mSlider1.addChangeListener(new ChangeListener() {
 
@@ -75,6 +77,16 @@ public class MainPanel extends JPanel
 			public void stateChanged(final ChangeEvent e) {
 				mGamePanel1.initSingleBoard(mSlider1.getValue());
 				mGamePanel1.repaint();
+			}
+		});
+		addMouseWheelListener(new MouseWheelListener() {
+
+			@Override
+			public void mouseWheelMoved(final MouseWheelEvent e) {
+				if (e.getScrollType() == MouseWheelEvent.WHEEL_UNIT_SCROLL) {
+					mSlider1.setValue(mSlider1.getValue() - 2
+							* e.getWheelRotation());
+				}
 			}
 		});
 	}
