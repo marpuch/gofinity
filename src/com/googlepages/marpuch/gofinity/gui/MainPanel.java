@@ -17,8 +17,6 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.Sizes;
 
-
-
 /**
  * @author User #3
  */
@@ -70,12 +68,12 @@ public class MainPanel extends JPanel
 	}
 
 	private void initBoardResizing() {
-		mGamePanel1.initSingleBoard(mSlider1.getValue());
+		mGamePanel1.initBoard(mSlider1.getValue());
 		mSlider1.addChangeListener(new ChangeListener() {
 
 			@Override
 			public void stateChanged(final ChangeEvent e) {
-				mGamePanel1.initSingleBoard(mSlider1.getValue());
+				mGamePanel1.initBoard(mSlider1.getValue());
 				mGamePanel1.repaint();
 			}
 		});
@@ -86,6 +84,7 @@ public class MainPanel extends JPanel
 				if (e.getScrollType() == MouseWheelEvent.WHEEL_UNIT_SCROLL) {
 					mSlider1.setValue(mSlider1.getValue() - 2
 							* e.getWheelRotation());
+					e.consume();
 				}
 			}
 		});
