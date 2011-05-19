@@ -17,8 +17,10 @@ import com.googlepages.marpuch.gofinity.gui.images.AbstractBoardImage;
 import com.googlepages.marpuch.gofinity.gui.images.OverBoardMarkings;
 import com.googlepages.marpuch.gofinity.gui.images.SingleBoard;
 
-public class GamePanel extends JPanel
-{
+public class GamePanel extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+
 	private AbstractBoardImage singleBoard;
 	private OverBoardMarkings overBoardMarkings;
 
@@ -46,27 +48,20 @@ public class GamePanel extends JPanel
 	}
 
 	private void drawBoards(final Graphics2D g) {
-		if (singleBoard == null)
+		drawBoard(g, singleBoard);
+		drawBoard(g, overBoardMarkings);
+	}
+
+	private void drawBoard(final Graphics2D g, final AbstractBoardImage boardImage) {
+		if (boardImage == null)
 			return;
 		Dimension panelSize = getSize();
-		Dimension singleBoardSize = new Dimension(singleBoard.getBoardImage().getWidth(), singleBoard.getBoardImage().getHeight());
-		for (int x = 0; x < panelSize.width; x += singleBoardSize.width)
-		{
-			for (int y = 0; y < panelSize.height; y+= singleBoardSize.height)
-			{
-				g.drawImage(singleBoard.getBoardImage(), x, y, singleBoardSize.width, singleBoardSize.height, (ImageObserver) null);
+		Dimension singleBoardSize = new Dimension(boardImage.getBoardImage().getWidth(), boardImage.getBoardImage().getHeight());
+		for (int x = 0; x < panelSize.width; x += singleBoardSize.width) {
+			for (int y = 0; y < panelSize.height; y += singleBoardSize.height) {
+				g.drawImage(boardImage.getBoardImage(), x, y, singleBoardSize.width, singleBoardSize.height, (ImageObserver) null);
 			}
 		}
-		if (overBoardMarkings == null)
-			return;
-		for (int x = 0; x < panelSize.width; x += singleBoardSize.width)
-		{
-			for (int y = 0; y < panelSize.height; y+= singleBoardSize.height)
-			{
-				g.drawImage(overBoardMarkings.getBoardImage(), x, y, singleBoardSize.width, singleBoardSize.height, (ImageObserver) null);
-			}
-		}
-
 	}
 
 	private void initMouseListener() {
