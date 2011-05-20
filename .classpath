@@ -7,5 +7,10 @@
 	<classpathentry kind="lib" path="lib/lombok.jar"/>
 	<classpathentry kind="lib" path="lib/commons-logging-1.1.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="lib/spring-core-3.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-beans-3.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-context-3.0.2.RELEASE.jar" sourcepath="C:/K/swll6/repository/org/springframework/spring-context/3.0.2.RELEASE/spring-context-3.0.2.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="lib/spring-asm-3.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-expression-3.0.2.RELEASE.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

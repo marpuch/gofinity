@@ -1,0 +1,5 @@
+Libraries and what do we need them for:
+- log4j, commons-logging - apache logging facility and a commons library to make the use easier
+- forms - jgoodies library to work with jformdesigner.
+- lombok - generates setters, getters, toString, hash, equals and constructors in java classes
+- 
