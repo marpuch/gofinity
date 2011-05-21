@@ -1,4 +1,4 @@
-package com.googlepages.marpuch.gofinity.main;
+package com.googlepages.marpuch.gofinity;
 
 import org.apache.commons.logging.Log;
 import org.springframework.context.ApplicationContext;
