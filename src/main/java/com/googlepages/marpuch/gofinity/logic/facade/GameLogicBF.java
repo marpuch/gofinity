@@ -5,10 +5,11 @@ import com.googlepages.marpuch.gofinity.logic.spec.GameLogicBCI;
 
 public class GameLogicBF implements GameLogicBCI {
 
-	@Override
-	public void init(GameParameters gameParameters) {
-		// TODO Auto-generated method stub
+	private GameParameters gameParameters;
 
+	@Override
+	public void init(final GameParameters gameParameters) {
+		this.gameParameters = gameParameters;
 	}
 
 }

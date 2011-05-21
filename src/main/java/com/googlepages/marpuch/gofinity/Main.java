@@ -1,11 +1,10 @@
 package com.googlepages.marpuch.gofinity;
 
 import org.apache.commons.logging.Log;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.googlepages.marpuch.gofinity.gui.MainFrame;
 import com.googlepages.marpuch.gofinity.util.LoggerFactory;
+import com.googlepages.marpuch.gofinity.util.Registry;
 
 public class Main
 {
@@ -15,7 +14,7 @@ public class Main
 	{
 		log.debug("Starting gofinity...");
 
-		ApplicationContext context = new ClassPathXmlApplicationContext("default-beans.xml");
+		Registry.init();
 
 		MainFrame frame = new MainFrame();
 		frame.setDefaultCloseOperation(MainFrame.EXIT_ON_CLOSE);
