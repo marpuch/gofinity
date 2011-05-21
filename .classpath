@@ -14,5 +14,7 @@
 	<classpathentry kind="lib" path="lib/spring-context-3.0.2.RELEASE.jar" sourcepath="C:/K/swll6/repository/org/springframework/spring-context/3.0.2.RELEASE/spring-context-3.0.2.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="lib/spring-asm-3.0.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-expression-3.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/cuf-1.15.jar" sourcepath="lib/cuf-1.15-sources.jar"/>
+	<classpathentry kind="lib" path="lib/jdom.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

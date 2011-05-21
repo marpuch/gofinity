@@ -1,11 +1,14 @@
 package com.googlepages.marpuch.gofinity.gui;
 
-import java.awt.*;
-import javax.swing.*;
-import com.jgoodies.forms.layout.*;
-/*
- * Created by JFormDesigner on Sun May 15 13:41:54 CEST 2011
- */
+import java.awt.Container;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+import com.jgoodies.forms.layout.CellConstraints;
+import com.jgoodies.forms.layout.FormLayout;
 
 
 
@@ -13,6 +16,9 @@ import com.jgoodies.forms.layout.*;
  * @author User #3
  */
 public class MainFrame extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+
 	public MainFrame() {
 		initComponents();
 	}
@@ -30,8 +36,8 @@ public class MainFrame extends JFrame {
 		setName("this");
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new FormLayout(
-			"default:grow",
-			"fill:default:grow"));
+				"default:grow",
+		"fill:default:grow"));
 
 		//======== mMenuBar1 ========
 		{

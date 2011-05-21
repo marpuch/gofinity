@@ -3,3 +3,5 @@ Libraries and what do we need them for:
 - forms - jgoodies library to work with jformdesigner.
 - lombok - generates setters, getters, toString, hash, equals and constructors in java classes
 - spring* - spring IoC framework
+- cuf - framework for swing
+- jdom - xml parser, needed for cuf

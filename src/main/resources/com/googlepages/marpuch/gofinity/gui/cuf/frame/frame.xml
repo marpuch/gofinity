@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml2swing PUBLIC "CUF_DTD_1_8" "http://www.sdm.com/dtd/xml2swing-1.8.dtd">
+
+<xml2swing>
+	<nonvisual>
+		<object id="FramePc" class="com.googlepages.marpuch.gofinity.gui.cuf.frame.FramePc" />
+		<action id="FileQuit">
+			<text>Quit</text>
+			<tooltip>Quit the application.</tooltip>
+			<mnemonic>Q</mnemonic>
+			<accelerator>control Q</accelerator>
+		</action>
+		<action id="HelpAbout">
+			<text>About</text>
+			<tooltip>Shows information about the application.</tooltip>
+			<mnemonic>I</mnemonic>
+		</action>
+		<action id="HelpHelp">
+			<text>Help</text>
+			<tooltip>Opens the help system.</tooltip>
+			<mnemonic>H</mnemonic>
+		</action>
+		<action id="HelpUserinfo">
+			<text>Userinfo</text>
+			<tooltip>Shows information about the current user.</tooltip>
+			<mnemonic>U</mnemonic>
+		</action>
+	</nonvisual>
+
+	<visual>
+		<frame id="Frame" closeAction="FileQuit">
+			<icon name="gofinity" />
+			<title>gofinity</title>
+
+			<menubar id="MenuBar">
+				<menu id="File">
+					<text>File</text>
+					<mnemonic>F</mnemonic>
+					<menuitem actionref="FileQuit" />
+				</menu>
+				<menu id="Help">
+					<text>Help</text>
+					<mnemonic>H</mnemonic>
+					<menuitem actionref="HelpAbout" />
+				</menu>
+			</menubar>
+
+			<!-- <any class="com.bmw.swll6.gui.portal.panel.PortalPanel" id="Panel"
+				importNames="true"></any> -->
+		</frame>
+	</visual>
+
+	<connect>
+	</connect>
+
+</xml2swing>
