@@ -41,6 +41,8 @@
 	</visual>
 
 	<connect>
+		<actionAction source="btnStart" target="FrameDc"
+	    	method="startGame" />
 	</connect>
 
 </xml2swing>

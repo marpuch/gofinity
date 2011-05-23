@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml2swing PUBLIC "CUF_DTD_1_8" "http://www.sdm.com/dtd/xml2swing-1.8.dtd">
+
+<xml2swing>
+
+	<nonvisual>
+		<object id="LocalGamePc" class="com.googlepages.marpuch.gofinity.gui.cuf.tab.localgame.LocalGamePc" />
+	</nonvisual>
+
+	<visual>
+		<any class="com.googlepages.marpuch.gofinity.gui.view.LocalGamePanel" id="LocalGamePanel"
+			importNames="true">
+			<border type="empty">
+				<dlu>dialog</dlu>
+			</border>
+		</any>
+	</visual>
+
+	<connect>
+	</connect>
+
+</xml2swing>

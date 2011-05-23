@@ -1,5 +1,6 @@
 package com.googlepages.marpuch.gofinity.gui.cuf.frame;
 
+import java.awt.Component;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Map;
@@ -7,10 +8,12 @@ import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 
+import com.googlepages.marpuch.gofinity.gui.cuf.tab.TabDialogDc;
 import com.googlepages.marpuch.gofinity.gui.widget.ClosableTab;
 import com.sdm.util.ui.builder.SwingXMLBuilder;
 import com.sdm.util.ui.fw.Dc;
 import com.sdm.util.ui.fw2.AbstractAppPc;
+import com.sdm.util.ui.fw2.CloseDialogEvent;
 
 public class FramePc extends AbstractAppPc implements SwingXMLBuilder.Backlink {
 
@@ -22,10 +25,6 @@ public class FramePc extends AbstractAppPc implements SwingXMLBuilder.Backlink {
 		super.init(pDc, pArgs);
 		dc = (FrameDc) pDc;
 		initFrame();
-
-		// TODO not the right place to do
-		JTabbedPane pane = (JTabbedPane) builder.getByShortName("tabbedPane");
-		pane.setTabComponentAt(0, new ClosableTab(pane));
 	}
 
 	private void initFrame() {
@@ -54,10 +53,28 @@ public class FramePc extends AbstractAppPc implements SwingXMLBuilder.Backlink {
 
 	}
 
+	public void addTab(final TabDialogDc dc) {
+		JTabbedPane pane = getTabbedPane();
+		int i = pane.getTabCount();
+		pane.add((Component) dc.getVisualPresentation());
+		pane.setTitleAt(i, dc.getTabName());
+		pane.setTabComponentAt(i, new ClosableTab(pane, new Runnable() {
+
+			@Override
+			public void run() {
+				postAppEvent(new CloseDialogEvent(this, dc));
+			}
+		}));
+	}
+
 	// //////////////////////////////////////////
 	// CUF getters
 
 	private JFrame getFrame() {
 		return (JFrame) builder.getContainerByName("Frame");
+	}
+
+	private JTabbedPane getTabbedPane() {
+		return (JTabbedPane) builder.getByShortName("tabbedPane");
 	}
 }

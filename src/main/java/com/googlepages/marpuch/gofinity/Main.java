@@ -30,7 +30,8 @@ public class Main extends AbstractDialogApplication
 
 		Registry.init();
 
-		Map<String, DialogDescription> knownDialogs = DialogDescription.loadKnownDialogs("cuf.properties");
+		Map<String, DialogDescription> knownDialogs = DialogDescription
+				.loadKnownDialogs("cuf_main.properties");
 		mDialogManager.setKnownDialogs(knownDialogs);
 		mDialogManager.setCallback(new DialogManager.DialogCallback() {
 

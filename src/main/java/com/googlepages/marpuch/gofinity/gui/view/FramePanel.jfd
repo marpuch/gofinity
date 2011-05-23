@@ -44,11 +44,37 @@
          <object class="com.jformdesigner.model.FormComponent"> 
           <string>javax.swing.JButton</string> 
           <void method="setProperty"> 
-           <string>text</string> 
-           <string>Start...</string> 
+           <string>icon</string> 
+           <object class="com.jformdesigner.model.SwingIcon"> 
+            <int>0</int> 
+            <string>/icons/start_game.gif</string> 
+           </object> 
+          </void> 
+          <void method="setProperty"> 
+           <string>toolTipText</string> 
+           <string>Start game</string> 
           </void> 
           <void property="name"> 
-           <string>button1</string> 
+           <string>btnStart</string> 
+          </void> 
+         </object> 
+        </void> 
+        <void method="add"> 
+         <object class="com.jformdesigner.model.FormComponent"> 
+          <string>javax.swing.JButton</string> 
+          <void method="setProperty"> 
+           <string>icon</string> 
+           <object class="com.jformdesigner.model.SwingIcon"> 
+            <int>0</int> 
+            <string>/icons/start_network_game.gif</string> 
+           </object> 
+          </void> 
+          <void method="setProperty"> 
+           <string>toolTipText</string> 
+           <string>Start network game</string> 
+          </void> 
+          <void property="name"> 
+           <string>btnStartNetwork</string> 
           </void> 
          </object> 
         </void> 
@@ -69,32 +95,6 @@
         </object> 
         <void property="name"> 
          <string>tabbedPane</string> 
-        </void> 
-        <void method="add"> 
-         <object class="com.jformdesigner.model.FormContainer"> 
-          <string>javax.swing.JPanel</string> 
-          <object class="com.jformdesigner.model.FormLayoutManager"> 
-           <class>com.jgoodies.forms.layout.FormLayout</class> 
-           <void method="setProperty"> 
-            <string>$columnSpecs</string> 
-            <string>default, labelcompgap, default</string> 
-           </void> 
-           <void method="setProperty"> 
-            <string>$rowSpecs</string> 
-            <string>default, linegap, default, linegap, default</string> 
-           </void> 
-          </object> 
-          <void property="name"> 
-           <string>panel1</string> 
-          </void> 
-         </object> 
-         <object class="com.jformdesigner.model.FormLayoutConstraints"> 
-          <null/> 
-          <void method="setProperty"> 
-           <string>title</string> 
-           <string>test</string> 
-          </void> 
-         </object> 
         </void> 
        </object> 
        <object class="com.jformdesigner.model.FormLayoutConstraints"> 

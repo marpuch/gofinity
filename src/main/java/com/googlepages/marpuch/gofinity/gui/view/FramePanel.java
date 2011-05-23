@@ -22,9 +22,9 @@ public class FramePanel extends JPanel {
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		mToolbar = new JToolBar();
-		mButton1 = new JButton();
+		mBtnStart = new JButton();
+		mBtnStartNetwork = new JButton();
 		mTabbedPane = new JTabbedPane();
-		mPanel1 = new JPanel();
 		mLStatus = new JLabel();
 		CellConstraints cc = new CellConstraints();
 
@@ -51,36 +51,23 @@ public class FramePanel extends JPanel {
 			mToolbar.setRollover(true);
 			mToolbar.setName("Toolbar");
 
-			//---- mButton1 ----
-			mButton1.setText("Start...");
-			mButton1.setName("button1");
-			mToolbar.add(mButton1);
+			//---- mBtnStart ----
+			mBtnStart.setIcon(new ImageIcon(getClass().getResource("/icons/start_game.gif")));
+			mBtnStart.setToolTipText("Start game");
+			mBtnStart.setName("btnStart");
+			mToolbar.add(mBtnStart);
+
+			//---- mBtnStartNetwork ----
+			mBtnStartNetwork.setIcon(new ImageIcon(getClass().getResource("/icons/start_network_game.gif")));
+			mBtnStartNetwork.setToolTipText("Start network game");
+			mBtnStartNetwork.setName("btnStartNetwork");
+			mToolbar.add(mBtnStartNetwork);
 		}
 		add(mToolbar, cc.xywh(1, 1, 3, 1));
 
 		//======== mTabbedPane ========
 		{
 			mTabbedPane.setName("tabbedPane");
-
-			//======== mPanel1 ========
-			{
-				mPanel1.setName("panel1");
-				mPanel1.setLayout(new FormLayout(
-					new ColumnSpec[] {
-						FormFactory.DEFAULT_COLSPEC,
-						new ColumnSpec(Sizes.DLUX3),
-						FormFactory.DEFAULT_COLSPEC
-					},
-					new RowSpec[] {
-						FormFactory.DEFAULT_ROWSPEC,
-						FormFactory.LINE_GAP_ROWSPEC,
-						FormFactory.DEFAULT_ROWSPEC,
-						FormFactory.LINE_GAP_ROWSPEC,
-						FormFactory.DEFAULT_ROWSPEC
-					}));
-			}
-			mTabbedPane.addTab("test", mPanel1);
-
 		}
 		add(mTabbedPane, cc.xy(2, 3));
 
@@ -94,9 +81,9 @@ public class FramePanel extends JPanel {
 
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
 	private JToolBar mToolbar;
-	private JButton mButton1;
+	private JButton mBtnStart;
+	private JButton mBtnStartNetwork;
 	private JTabbedPane mTabbedPane;
-	private JPanel mPanel1;
 	private JLabel mLStatus;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 }

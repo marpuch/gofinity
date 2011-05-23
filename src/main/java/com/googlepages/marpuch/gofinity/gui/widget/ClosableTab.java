@@ -60,14 +60,16 @@ public class ClosableTab extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private final JTabbedPane pane;
+	private Runnable runAfterClose;
 
-	public ClosableTab(final JTabbedPane pane) {
+	public ClosableTab(final JTabbedPane pane, final Runnable runAfterClose) {
 		//unset default FlowLayout' gaps
 		super(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		if (pane == null) {
 			throw new NullPointerException("TabbedPane is null");
 		}
 		this.pane = pane;
+		this.runAfterClose = runAfterClose;
 		setOpaque(false);
 
 		//make JLabel read titles from JTabbedPane
@@ -128,6 +130,8 @@ public class ClosableTab extends JPanel {
 			if (i != -1) {
 				pane.remove(i);
 			}
+			if (runAfterClose != null)
+				runAfterClose.run();
 		}
 
 		//we don't want to update UI for this button

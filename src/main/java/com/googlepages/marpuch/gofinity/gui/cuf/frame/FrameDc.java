@@ -6,12 +6,16 @@ import java.util.Map;
 
 import org.apache.commons.logging.Log;
 
+import com.googlepages.marpuch.gofinity.gui.cuf.tab.TabDialogDc;
 import com.googlepages.marpuch.gofinity.util.LoggerFactory;
 import com.googlepages.marpuch.gofinity.util.ResourceUtils;
 import com.sdm.util.ui.builder.SwingXMLBuilder;
 import com.sdm.util.ui.fw.Dc;
 import com.sdm.util.ui.fw2.AbstractAppDc;
 import com.sdm.util.ui.fw2.CloseDialogEvent;
+import com.sdm.util.ui.fw2.DialogDescription;
+import com.sdm.util.ui.fw2.DialogManager.DialogCallback;
+import com.sdm.util.ui.fw2.OpenDialogEvent;
 
 public class FrameDc extends AbstractAppDc {
 
@@ -26,6 +30,7 @@ public class FrameDc extends AbstractAppDc {
 		log.debug("init");
 		initBuilder();
 		initPc(args);
+		initOpenDialogCallback();
 	}
 
 	private void initBuilder() {
@@ -40,6 +45,29 @@ public class FrameDc extends AbstractAppDc {
 		pc = (FramePc) builder.getNonVisualObject("FramePc");
 		Map<String, Object> map = new HashMap<String, Object>(args);
 		pc.init(this, map);
+	}
+
+	private void initOpenDialogCallback() {
+		Map<String, DialogDescription> knownDialogs = DialogDescription
+		.loadKnownDialogs("cuf_tab.properties");
+		mDialogManager.setKnownDialogs(knownDialogs);
+		mDialogManager.setCallback(new DialogCallback() {
+
+			@Override
+			public void dialogOpened(final Dc dc, final Map<String, Object> args) {
+				if (log.isDebugEnabled())
+					log.debug("Dialog opened: " + dc.getClass());
+				pc.addTab((TabDialogDc) dc);
+			}
+
+			@Override
+			public void dialogClosed(final Dc pDc, final boolean pWasClosed,
+					final Map<String, Object> pArgs) {
+				if (log.isDebugEnabled())
+					log.debug("Dialog closed: " + pDc.getClass());
+
+			}
+		});
 	}
 
 	@Override
@@ -64,8 +92,15 @@ public class FrameDc extends AbstractAppDc {
 	}
 
 	public void quit() {
+		log.debug("quit");
 		CloseDialogEvent close = new CloseDialogEvent(this, this, true);
 		postAppEvent(close);
 	}
 
+	public void startGame() {
+		log.debug("startGame");
+		OpenDialogEvent open = new OpenDialogEvent(this, "LocalGameDc");
+		postAppEvent(open);
+	}
 }
+
