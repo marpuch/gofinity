@@ -5,7 +5,9 @@ import java.awt.event.WindowEvent;
 import java.util.Map;
 
 import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
 
+import com.googlepages.marpuch.gofinity.gui.widget.ClosableTab;
 import com.sdm.util.ui.builder.SwingXMLBuilder;
 import com.sdm.util.ui.fw.Dc;
 import com.sdm.util.ui.fw2.AbstractAppPc;
@@ -20,6 +22,10 @@ public class FramePc extends AbstractAppPc implements SwingXMLBuilder.Backlink {
 		super.init(pDc, pArgs);
 		dc = (FrameDc) pDc;
 		initFrame();
+
+		// TODO not the right place to do
+		JTabbedPane pane = (JTabbedPane) builder.getByShortName("tabbedPane");
+		pane.setTabComponentAt(0, new ClosableTab(pane));
 	}
 
 	private void initFrame() {

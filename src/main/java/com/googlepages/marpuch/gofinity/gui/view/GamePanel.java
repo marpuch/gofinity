@@ -1,4 +1,4 @@
-package com.googlepages.marpuch.gofinity.gui;
+package com.googlepages.marpuch.gofinity.gui.view;
 
 import java.awt.Dimension;
 import java.awt.Graphics;

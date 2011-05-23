@@ -45,6 +45,7 @@ public class FrameDc extends AbstractAppDc {
 	@Override
 	public boolean canPassivate() {
 		log.debug("canPassivate");
+		// TODO ask other dialogs if can passivate
 		return mDialogManager.canPassivate();
 	}
 

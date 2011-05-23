@@ -15,16 +15,6 @@
 			<tooltip>Shows information about the application.</tooltip>
 			<mnemonic>I</mnemonic>
 		</action>
-		<action id="HelpHelp">
-			<text>Help</text>
-			<tooltip>Opens the help system.</tooltip>
-			<mnemonic>H</mnemonic>
-		</action>
-		<action id="HelpUserinfo">
-			<text>Userinfo</text>
-			<tooltip>Shows information about the current user.</tooltip>
-			<mnemonic>U</mnemonic>
-		</action>
 	</nonvisual>
 
 	<visual>
@@ -45,8 +35,8 @@
 				</menu>
 			</menubar>
 
-			<!-- <any class="com.bmw.swll6.gui.portal.panel.PortalPanel" id="Panel"
-				importNames="true"></any> -->
+			<any class="com.googlepages.marpuch.gofinity.gui.view.FramePanel" id="FramePanel"
+				importNames="true"></any>
 		</frame>
 	</visual>
 

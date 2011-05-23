@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
+import javax.swing.ImageIcon;
+
 public class ResourceUtils {
 
 	private ResourceUtils() {
@@ -19,6 +21,17 @@ public class ResourceUtils {
 		} catch (IOException e) {
 			throw new RuntimeException("Could not find " + resource
 					+ " on classpath.", e);
+		}
+	}
+
+	public static ImageIcon createImageIcon(final String path,
+			final String description) {
+		java.net.URL imgURL = ResourceUtils.class.getResource(path);
+		if (imgURL != null) {
+			return new ImageIcon(imgURL, description);
+		} else {
+			System.err.println("Couldn't find file: " + path);
+			return null;
 		}
 	}
 }

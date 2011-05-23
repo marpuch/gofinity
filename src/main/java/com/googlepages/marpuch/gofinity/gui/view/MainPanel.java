@@ -1,4 +1,4 @@
-package com.googlepages.marpuch.gofinity.gui;
+package com.googlepages.marpuch.gofinity.gui.view;
 
 import java.awt.Dimension;
 import java.awt.event.MouseWheelEvent;
@@ -22,6 +22,8 @@ import com.jgoodies.forms.layout.Sizes;
  */
 public class MainPanel extends JPanel
 {
+	private static final long serialVersionUID = 1L;
+
 	public MainPanel() {
 		initComponents();
 		initBoardResizing();
