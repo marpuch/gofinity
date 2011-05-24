@@ -8,6 +8,7 @@ import javax.swing.JSlider;
 
 import com.googlepages.marpuch.gofinity.entity.GameParameters;
 import com.googlepages.marpuch.gofinity.gui.cuf.util.SliderAdapter;
+import com.googlepages.marpuch.gofinity.gui.view.MainPanel;
 import com.sdm.util.ui.builder.SwingXMLBuilder;
 import com.sdm.util.ui.fw.Dc;
 import com.sdm.util.ui.fw2.AbstractDialogPc;
@@ -35,6 +36,11 @@ public class LocalGamePc extends AbstractDialogPc {
 	}
 
 	public void startGame(final GameParameters gameParameters) {
+		getGamePanel().init(gameParameters);
+		switchToGamePanel();
+	}
+
+	private void switchToGamePanel() {
 		JPanel panel = getRootPanel();
 		CardLayout layout = (CardLayout) panel.getLayout();
 		layout.next(panel);
@@ -48,7 +54,11 @@ public class LocalGamePc extends AbstractDialogPc {
 	}
 
 	private JPanel getRootPanel() {
-		JPanel panel = (JPanel) builder.getComponentByAnyName("pGameParameters");
+		JPanel panel = getGamePanel();
 		return (JPanel) panel.getParent();
+	}
+
+	private MainPanel getGamePanel() {
+		return (MainPanel) builder.getComponentByAnyName("pGame");
 	}
 }

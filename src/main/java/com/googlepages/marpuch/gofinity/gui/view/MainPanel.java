@@ -1,6 +1,6 @@
 package com.googlepages.marpuch.gofinity.gui.view;
 
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
@@ -8,10 +8,13 @@ import java.awt.event.MouseWheelListener;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
-import javax.swing.border.*;
+import javax.swing.border.SoftBevelBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import com.googlepages.marpuch.gofinity.entity.GameParameters;
+import com.googlepages.marpuch.gofinity.logic.spec.GameLogicBCI;
+import com.googlepages.marpuch.gofinity.util.Registry;
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -25,10 +28,17 @@ import com.jgoodies.forms.layout.Sizes;
 public class MainPanel extends JPanel
 {
 	private static final long serialVersionUID = 1L;
+	private GameLogicBCI gameLogic;
 
 	public MainPanel() {
 		initComponents();
 		initBoardResizing();
+	}
+
+	public void init(final GameParameters gameParameters) {
+		gameLogic = Registry.getObject(GameLogicBCI.class);
+		gameLogic.init(gameParameters);
+		mGamePanel1.initBoard(gameLogic, mSlider1.getValue());
 	}
 
 	private void initComponents() {
@@ -42,16 +52,16 @@ public class MainPanel extends JPanel
 		setPreferredSize(new Dimension(600, 400));
 		setName("this");
 		setLayout(new FormLayout(
-			new ColumnSpec[] {
-				FormFactory.DEFAULT_COLSPEC,
-				new ColumnSpec(Sizes.DLUX3),
-				new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, 1.0)
-			},
-			new RowSpec[] {
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.LINE_GAP_ROWSPEC,
-				new RowSpec(RowSpec.FILL, Sizes.DEFAULT, 1.0)
-			}));
+				new ColumnSpec[] {
+						FormFactory.DEFAULT_COLSPEC,
+						new ColumnSpec(Sizes.DLUX3),
+						new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, 1.0)
+				},
+				new RowSpec[] {
+						FormFactory.DEFAULT_ROWSPEC,
+						FormFactory.LINE_GAP_ROWSPEC,
+						new RowSpec(RowSpec.FILL, Sizes.DEFAULT, 1.0)
+				}));
 
 		//---- mSlider1 ----
 		mSlider1.setOrientation(SwingConstants.VERTICAL);
@@ -79,12 +89,12 @@ public class MainPanel extends JPanel
 	}
 
 	private void initBoardResizing() {
-		mGamePanel1.initBoard(mSlider1.getValue());
+		mGamePanel1.initBoard(gameLogic, mSlider1.getValue());
 		mSlider1.addChangeListener(new ChangeListener() {
 
 			@Override
 			public void stateChanged(final ChangeEvent e) {
-				mGamePanel1.initBoard(mSlider1.getValue());
+				mGamePanel1.initBoard(gameLogic, mSlider1.getValue());
 				mGamePanel1.repaint();
 			}
 		});

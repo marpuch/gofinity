@@ -2,15 +2,13 @@ package com.googlepages.marpuch.gofinity.gui.images;
 
 import java.awt.Color;
 
-import com.googlepages.marpuch.gofinity.entity.BoardContent;
 import com.googlepages.marpuch.gofinity.entity.FieldContent;
-import com.googlepages.marpuch.gofinity.entity.GameParameters;
+import com.googlepages.marpuch.gofinity.logic.spec.GameLogicBCI;
 
 public class SingleBoard extends AbstractBoardImage {
 
-	public SingleBoard(final BoardContent boardContent,
-			final GameParameters gameParameters, final int singleFieldSize) {
-		super(boardContent, gameParameters, singleFieldSize);
+	public SingleBoard(final GameLogicBCI gameLogic, final int singleFieldSize) {
+		super(gameLogic, singleFieldSize);
 		drawBoard();
 	}
 

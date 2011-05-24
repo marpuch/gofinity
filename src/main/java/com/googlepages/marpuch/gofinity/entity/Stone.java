@@ -10,4 +10,11 @@ public enum Stone {
 		else
 			return FieldContent.WHITE;
 	}
+
+	public static Stone nextPlayer(final Stone player) {
+		if (BLACK.equals(player))
+			return WHITE;
+		else
+			return BLACK;
+	}
 }

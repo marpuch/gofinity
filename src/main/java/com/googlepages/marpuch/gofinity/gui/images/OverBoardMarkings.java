@@ -2,10 +2,9 @@ package com.googlepages.marpuch.gofinity.gui.images;
 
 import lombok.Getter;
 
-import com.googlepages.marpuch.gofinity.entity.BoardContent;
 import com.googlepages.marpuch.gofinity.entity.FieldContent;
-import com.googlepages.marpuch.gofinity.entity.GameParameters;
 import com.googlepages.marpuch.gofinity.entity.Stone;
+import com.googlepages.marpuch.gofinity.logic.spec.GameLogicBCI;
 
 public class OverBoardMarkings extends AbstractBoardImage {
 
@@ -13,9 +12,8 @@ public class OverBoardMarkings extends AbstractBoardImage {
 	private int oldY = -1;
 	@Getter private boolean changed = false;
 
-	public OverBoardMarkings(final BoardContent boardContent, final GameParameters gameParameters,
-			final int singleFieldSize) {
-		super(boardContent, gameParameters, singleFieldSize);
+	public OverBoardMarkings(final GameLogicBCI gameLogic, final int singleFieldSize) {
+		super(gameLogic, singleFieldSize);
 	}
 
 	public void handleMouseMove(final int xCoordinate, final int yCoordinate) {
@@ -36,6 +34,8 @@ public class OverBoardMarkings extends AbstractBoardImage {
 
 	private void handlePositionChanged(final int x, final int y) {
 		clearImage();
+		if (x < 0 || y < 0)
+			return;
 		// TODO localize me
 		if (FieldContent.EMPTY.equals(boardContent.getFieldContent(x, y)))
 		{
@@ -46,9 +46,6 @@ public class OverBoardMarkings extends AbstractBoardImage {
 		}
 	}
 
-	private int getBoardCoordinate(final int panelCoordinate) {
-		int trimmedCoordinate = panelCoordinate % imageSize;
-		return trimmedCoordinate / singleFieldSize;
-	}
+
 
 }

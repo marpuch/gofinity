@@ -3,6 +3,7 @@ package com.googlepages.marpuch.gofinity.gui.view;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -10,36 +11,30 @@ import java.awt.image.ImageObserver;
 
 import javax.swing.JPanel;
 
-import com.googlepages.marpuch.gofinity.entity.BoardContent;
-import com.googlepages.marpuch.gofinity.entity.FieldContent;
-import com.googlepages.marpuch.gofinity.entity.GameParameters;
 import com.googlepages.marpuch.gofinity.gui.images.AbstractBoardImage;
 import com.googlepages.marpuch.gofinity.gui.images.OverBoardMarkings;
 import com.googlepages.marpuch.gofinity.gui.images.SingleBoard;
+import com.googlepages.marpuch.gofinity.logic.spec.GameLogicBCI;
 
 public class GamePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private AbstractBoardImage singleBoard;
+	private SingleBoard singleBoard;
 	private OverBoardMarkings overBoardMarkings;
+	private GameLogicBCI gameLogic;
 
 	public GamePanel() {
 		super();
 		initMouseListener();
 	}
 
-	public void initBoard(final int singleFieldSize) {
-		// TODO move elsewhere
-		BoardContent bc = new BoardContent(9);
-		bc.setFieldContent(1, 1, FieldContent.WHITE);
-		bc.setFieldContent(3, 4, FieldContent.BLACK);
-		bc.setFieldContent(0, 4, FieldContent.BLACK);
-		bc.setFieldContent(4, 0, FieldContent.WHITE);
-		bc.setFieldContent(0, 0, FieldContent.WHITE);
-		GameParameters gp = new GameParameters();
-		singleBoard = new SingleBoard(bc, gp, singleFieldSize);
-		overBoardMarkings = new OverBoardMarkings(bc, gp, singleFieldSize);
+	public void initBoard(final GameLogicBCI gameLogic, final int singleFieldSize) {
+		if (gameLogic == null)
+			return;
+		this.gameLogic = gameLogic;
+		singleBoard = new SingleBoard(gameLogic, singleFieldSize);
+		overBoardMarkings = new OverBoardMarkings(gameLogic, singleFieldSize);
 	}
 
 	@Override
@@ -79,6 +74,17 @@ public class GamePanel extends JPanel {
 			public void mouseExited(final MouseEvent e) {
 				e.consume();
 				updateCursorPosition(-1, -1);
+			}
+
+			@Override
+			public void mouseClicked(final MouseEvent e) {
+				e.consume();
+				Point point = singleBoard.getBoardCoordinates(e.getX(), e.getY());
+				if (gameLogic.putStone(point.x, point.y)) {
+					singleBoard.drawBoard();
+					overBoardMarkings.handleMouseMove(-1, -1);
+					repaint();
+				}
 			}
 		});
 	}
