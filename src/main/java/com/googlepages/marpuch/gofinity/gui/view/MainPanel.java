@@ -39,18 +39,18 @@ public class MainPanel extends JPanel
 		setPreferredSize(new Dimension(600, 400));
 		setName("this");
 		setLayout(new FormLayout(
-				new ColumnSpec[] {
-						new ColumnSpec(Sizes.DLUX3),
-						new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, 1.0),
-						new ColumnSpec(Sizes.DLUX3),
-						new ColumnSpec("max(default;20dlu)")
-				},
-				new RowSpec[] {
-						FormFactory.DEFAULT_ROWSPEC,
-						FormFactory.LINE_GAP_ROWSPEC,
-						new RowSpec(RowSpec.FILL, Sizes.DEFAULT, 1.0),
-						FormFactory.LINE_GAP_ROWSPEC
-				}));
+			new ColumnSpec[] {
+				new ColumnSpec(Sizes.DLUX3),
+				new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, 1.0),
+				new ColumnSpec(Sizes.DLUX3),
+				new ColumnSpec("max(default;20dlu)")
+			},
+			new RowSpec[] {
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.LINE_GAP_ROWSPEC,
+				new RowSpec(RowSpec.FILL, Sizes.DEFAULT, 1.0),
+				FormFactory.LINE_GAP_ROWSPEC
+			}));
 
 		//---- mSlider1 ----
 		mSlider1.setOrientation(SwingConstants.VERTICAL);

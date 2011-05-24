@@ -8,9 +8,11 @@ import lombok.Getter;
 
 import org.apache.commons.logging.Log;
 
+import com.googlepages.marpuch.gofinity.entity.GameParameters;
 import com.googlepages.marpuch.gofinity.gui.cuf.tab.TabDialogDc;
 import com.googlepages.marpuch.gofinity.util.LoggerFactory;
 import com.googlepages.marpuch.gofinity.util.ResourceUtils;
+import com.sdm.util.model.ValueModel;
 import com.sdm.util.ui.builder.SwingXMLBuilder;
 import com.sdm.util.ui.fw.Dc;
 
@@ -27,6 +29,7 @@ public class LocalGameDc extends TabDialogDc {
 		log.debug("init");
 		initBuilder();
 		initPc(args);
+		initValueModels();
 	}
 
 	private void initBuilder() {
@@ -41,6 +44,11 @@ public class LocalGameDc extends TabDialogDc {
 		pc = (LocalGamePc) builder.getNonVisualObject("LocalGamePc");
 		Map<String, Object> map = new HashMap<String, Object>(args);
 		pc.init(this, map);
+	}
+
+	private void initValueModels() {
+		getGameParametersVM().setValue(new GameParameters());
+		pc.bindSliders();
 	}
 
 	@Override
@@ -63,4 +71,21 @@ public class LocalGameDc extends TabDialogDc {
 		return "Local game";
 	}
 
+	public void startGame(){
+		log.debug("startGame");
+
+	}
+
+	// //////////////////////////////////////////
+	// CUF getters
+
+	@SuppressWarnings("unchecked")
+	ValueModel<GameParameters> getGameParametersVM() {
+		return (ValueModel<GameParameters>) builder.getNonVisualObject("GameParametersVM");
+	}
+
+	@SuppressWarnings("unchecked")
+	ValueModel<Integer> getBoardSizeVM() {
+		return (ValueModel<Integer>) builder.getNonVisualObject("BoardSizeVM");
+	}
 }

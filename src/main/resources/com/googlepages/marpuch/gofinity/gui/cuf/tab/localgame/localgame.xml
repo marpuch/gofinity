@@ -17,6 +17,14 @@
 	</visual>
 
 	<connect>
+		<actionAction source="btnPlay" target="LocalGameDc" method="startGame" />
 	</connect>
+
+	<databinding>
+
+		<valueholder id="GameParametersVM" />
+		<aspectadapter id="BoardSizeVM" trigger="GameParametersVM" access="boardSize" />
+		
+	</databinding>
 
 </xml2swing>

@@ -41,7 +41,7 @@ public class OverBoardMarkings extends AbstractBoardImage {
 		{
 			int xCoordinate = getCoordinate(x);
 			int yCoordinate = getCoordinate(y);
-			FieldContent fc = Stone.toFieldContent(gameParameters.getPlayerToMove());
+			FieldContent fc = Stone.toFieldContent(boardContent.getPlayerToMove());
 			drawStoneToImageCoordinates(xCoordinate, yCoordinate, fc, 0.5f);
 		}
 	}

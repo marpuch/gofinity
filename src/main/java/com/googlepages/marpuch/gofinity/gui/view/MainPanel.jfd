@@ -79,7 +79,7 @@
       </void> 
       <void method="add"> 
        <object class="com.jformdesigner.model.FormComponent"> 
-        <string>com.googlepages.marpuch.gofinity.gui.GamePanel</string> 
+        <string>com.googlepages.marpuch.gofinity.gui.view.GamePanel</string> 
         <void property="name"> 
          <string>gamePanel1</string> 
         </void> 
