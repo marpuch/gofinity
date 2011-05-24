@@ -13,11 +13,11 @@
        <class>com.jgoodies.forms.layout.FormLayout</class> 
        <void method="setProperty"> 
         <string>$columnSpecs</string> 
-        <string>labelcompgap, default:grow, labelcompgap, max(default;20dlu)</string> 
+        <string>default, labelcompgap, default:grow</string> 
        </void> 
        <void method="setProperty"> 
         <string>$rowSpecs</string> 
-        <string>default, linegap, fill:default:grow, linegap</string> 
+        <string>default, linegap, fill:default:grow</string> 
        </void> 
       </object> 
       <void method="setProperty"> 
@@ -68,31 +68,55 @@
        <object class="com.jformdesigner.model.FormLayoutConstraints"> 
         <class>com.jgoodies.forms.layout.CellConstraints</class> 
         <void method="setProperty"> 
-         <string>gridX</string> 
-         <int>4</int> 
-        </void> 
-        <void method="setProperty"> 
          <string>gridHeight</string> 
          <int>3</int> 
         </void> 
        </object> 
       </void> 
       <void method="add"> 
-       <object class="com.jformdesigner.model.FormComponent"> 
-        <string>com.googlepages.marpuch.gofinity.gui.view.GamePanel</string> 
+       <object class="com.jformdesigner.model.FormContainer"> 
+        <string>javax.swing.JPanel</string> 
+        <object class="com.jformdesigner.model.FormLayoutManager"> 
+         <class>java.awt.BorderLayout</class> 
+        </object> 
+        <void method="setProperty"> 
+         <string>border</string> 
+         <object class="javax.swing.border.SoftBevelBorder"> 
+          <int>1</int> 
+          <null/> 
+          <null/> 
+          <null/> 
+          <null/> 
+         </object> 
+        </void> 
         <void property="name"> 
-         <string>gamePanel1</string> 
+         <string>panel1</string> 
+        </void> 
+        <void method="add"> 
+         <object class="com.jformdesigner.model.FormComponent"> 
+          <string>com.googlepages.marpuch.gofinity.gui.view.GamePanel</string> 
+          <void property="name"> 
+           <string>gamePanel1</string> 
+          </void> 
+         </object> 
+         <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+          <class>java.lang.String</class> 
+          <void method="setProperty"> 
+           <string>value</string> 
+           <string>Center</string> 
+          </void> 
+         </object> 
         </void> 
        </object> 
        <object class="com.jformdesigner.model.FormLayoutConstraints"> 
         <class>com.jgoodies.forms.layout.CellConstraints</class> 
         <void method="setProperty"> 
-         <string>gridY</string> 
+         <string>gridX</string> 
          <int>3</int> 
         </void> 
         <void method="setProperty"> 
-         <string>gridX</string> 
-         <int>2</int> 
+         <string>gridY</string> 
+         <int>3</int> 
         </void> 
        </object> 
       </void> 

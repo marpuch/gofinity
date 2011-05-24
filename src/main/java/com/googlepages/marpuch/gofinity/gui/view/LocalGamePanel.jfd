@@ -30,7 +30,7 @@
          </void> 
         </object> 
         <void property="name"> 
-         <string>panel1</string> 
+         <string>pGameParameters</string> 
         </void> 
         <void method="add"> 
          <object class="com.jformdesigner.model.FormComponent"> 
@@ -310,7 +310,7 @@
        <object class="com.jformdesigner.model.FormComponent"> 
         <string>com.googlepages.marpuch.gofinity.gui.view.MainPanel</string> 
         <void property="name"> 
-         <string>panel2</string> 
+         <string>pGame</string> 
         </void> 
        </object> 
        <object class="com.jformdesigner.model.FormLayoutConstraints"> 

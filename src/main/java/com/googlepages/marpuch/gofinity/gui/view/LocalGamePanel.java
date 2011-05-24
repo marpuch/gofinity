@@ -37,7 +37,7 @@ public class LocalGamePanel extends JPanel {
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		DefaultComponentFactory compFactory = DefaultComponentFactory.getInstance();
-		mPanel1 = new JPanel();
+		mPGameParameters = new JPanel();
 		mSeparator1 = compFactory.createSeparator("Game parameters");
 		mLabel1 = new JLabel();
 		mSSize = new JSlider();
@@ -48,46 +48,46 @@ public class LocalGamePanel extends JPanel {
 		mLabel4 = new JLabel();
 		mCheckBox2 = new JCheckBox();
 		mBtnPlay = new JButton();
-		mPanel2 = new MainPanel();
+		mPGame = new MainPanel();
 		CellConstraints cc = new CellConstraints();
 
 		//======== this ========
 		setName("this");
 		setLayout(new CardLayout());
 
-		//======== mPanel1 ========
+		//======== mPGameParameters ========
 		{
-			mPanel1.setName("panel1");
-			mPanel1.setLayout(new FormLayout(
-					new ColumnSpec[] {
-							FormFactory.DEFAULT_COLSPEC,
-							new ColumnSpec(Sizes.DLUX3),
-							new ColumnSpec("max(default;50dlu):grow")
-					},
-					new RowSpec[] {
-							FormFactory.DEFAULT_ROWSPEC,
-							FormFactory.LINE_GAP_ROWSPEC,
-							FormFactory.DEFAULT_ROWSPEC,
-							FormFactory.LINE_GAP_ROWSPEC,
-							FormFactory.DEFAULT_ROWSPEC,
-							FormFactory.LINE_GAP_ROWSPEC,
-							FormFactory.DEFAULT_ROWSPEC,
-							FormFactory.LINE_GAP_ROWSPEC,
-							FormFactory.DEFAULT_ROWSPEC,
-							FormFactory.LINE_GAP_ROWSPEC,
-							new RowSpec(RowSpec.CENTER, Sizes.DEFAULT, 1.0),
-							FormFactory.LINE_GAP_ROWSPEC,
-							FormFactory.DEFAULT_ROWSPEC
-					}));
+			mPGameParameters.setName("pGameParameters");
+			mPGameParameters.setLayout(new FormLayout(
+				new ColumnSpec[] {
+					FormFactory.DEFAULT_COLSPEC,
+					new ColumnSpec(Sizes.DLUX3),
+					new ColumnSpec("max(default;50dlu):grow")
+				},
+				new RowSpec[] {
+					FormFactory.DEFAULT_ROWSPEC,
+					FormFactory.LINE_GAP_ROWSPEC,
+					FormFactory.DEFAULT_ROWSPEC,
+					FormFactory.LINE_GAP_ROWSPEC,
+					FormFactory.DEFAULT_ROWSPEC,
+					FormFactory.LINE_GAP_ROWSPEC,
+					FormFactory.DEFAULT_ROWSPEC,
+					FormFactory.LINE_GAP_ROWSPEC,
+					FormFactory.DEFAULT_ROWSPEC,
+					FormFactory.LINE_GAP_ROWSPEC,
+					new RowSpec(RowSpec.CENTER, Sizes.DEFAULT, 1.0),
+					FormFactory.LINE_GAP_ROWSPEC,
+					FormFactory.DEFAULT_ROWSPEC
+				}));
 
 			//---- mSeparator1 ----
 			mSeparator1.setName("separator1");
-			mPanel1.add(mSeparator1, cc.xywh(1, 1, 3, 1));
+			mPGameParameters.add(mSeparator1, cc.xywh(1, 1, 3, 1));
 
 			//---- mLabel1 ----
 			mLabel1.setText("Board size");
 			mLabel1.setName("label1");
-			mPanel1.add(mLabel1, cc.xy(1, 3));
+			mPGameParameters.add(mLabel1, cc.xy(1, 3));
 
 			//---- mSSize ----
 			mSSize.setMaximum(25);
@@ -99,12 +99,12 @@ public class LocalGamePanel extends JPanel {
 			mSSize.setMajorTickSpacing(2);
 			mSSize.setSnapToTicks(true);
 			mSSize.setName("sSize");
-			mPanel1.add(mSSize, cc.xy(3, 3));
+			mPGameParameters.add(mSSize, cc.xy(3, 3));
 
 			//---- mLabel2 ----
 			mLabel2.setText("White handicap");
 			mLabel2.setName("label2");
-			mPanel1.add(mLabel2, cc.xy(1, 5));
+			mPGameParameters.add(mLabel2, cc.xy(1, 5));
 
 			//---- mSHandicap ----
 			mSHandicap.setMaximum(10);
@@ -115,42 +115,42 @@ public class LocalGamePanel extends JPanel {
 			mSHandicap.setValue(0);
 			mSHandicap.setSnapToTicks(true);
 			mSHandicap.setName("sHandicap");
-			mPanel1.add(mSHandicap, cc.xy(3, 5));
+			mPGameParameters.add(mSHandicap, cc.xy(3, 5));
 
 			//---- mLabel3 ----
 			mLabel3.setText("Place handicap automaticaly");
 			mLabel3.setName("label3");
-			mPanel1.add(mLabel3, cc.xy(1, 7));
+			mPGameParameters.add(mLabel3, cc.xy(1, 7));
 
 			//---- mCheckBox1 ----
 			mCheckBox1.setName("checkBox1");
-			mPanel1.add(mCheckBox1, cc.xy(3, 7));
+			mPGameParameters.add(mCheckBox1, cc.xy(3, 7));
 
 			//---- mLabel4 ----
 			mLabel4.setText("Allow self-atari");
 			mLabel4.setName("label4");
-			mPanel1.add(mLabel4, cc.xy(1, 9));
+			mPGameParameters.add(mLabel4, cc.xy(1, 9));
 
 			//---- mCheckBox2 ----
 			mCheckBox2.setName("checkBox2");
-			mPanel1.add(mCheckBox2, cc.xy(3, 9));
+			mPGameParameters.add(mCheckBox2, cc.xy(3, 9));
 
 			//---- mBtnPlay ----
 			mBtnPlay.setText("Play");
 			mBtnPlay.setIcon(new ImageIcon(getClass().getResource("/icons/start_game.gif")));
 			mBtnPlay.setName("btnPlay");
-			mPanel1.add(mBtnPlay, cc.xy(3, 13, CellConstraints.RIGHT, CellConstraints.DEFAULT));
+			mPGameParameters.add(mBtnPlay, cc.xy(3, 13, CellConstraints.RIGHT, CellConstraints.DEFAULT));
 		}
-		add(mPanel1, "card1");
+		add(mPGameParameters, "card1");
 
-		//---- mPanel2 ----
-		mPanel2.setName("panel2");
-		add(mPanel2, "card2");
+		//---- mPGame ----
+		mPGame.setName("pGame");
+		add(mPGame, "card2");
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents
 	}
 
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-	private JPanel mPanel1;
+	private JPanel mPGameParameters;
 	private JComponent mSeparator1;
 	private JLabel mLabel1;
 	private JSlider mSSize;
@@ -161,6 +161,6 @@ public class LocalGamePanel extends JPanel {
 	private JLabel mLabel4;
 	private JCheckBox mCheckBox2;
 	private JButton mBtnPlay;
-	private MainPanel mPanel2;
+	private MainPanel mPGame;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 }

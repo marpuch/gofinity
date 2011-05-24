@@ -1,5 +1,6 @@
 package com.googlepages.marpuch.gofinity.gui.view;
 
+import java.awt.*;
 import java.awt.Dimension;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
@@ -7,6 +8,7 @@ import java.awt.event.MouseWheelListener;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
+import javax.swing.border.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -32,6 +34,7 @@ public class MainPanel extends JPanel
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		mSlider1 = new JSlider();
+		mPanel1 = new JPanel();
 		mGamePanel1 = new GamePanel();
 		CellConstraints cc = new CellConstraints();
 
@@ -40,16 +43,14 @@ public class MainPanel extends JPanel
 		setName("this");
 		setLayout(new FormLayout(
 			new ColumnSpec[] {
+				FormFactory.DEFAULT_COLSPEC,
 				new ColumnSpec(Sizes.DLUX3),
-				new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, 1.0),
-				new ColumnSpec(Sizes.DLUX3),
-				new ColumnSpec("max(default;20dlu)")
+				new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, 1.0)
 			},
 			new RowSpec[] {
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.LINE_GAP_ROWSPEC,
-				new RowSpec(RowSpec.FILL, Sizes.DEFAULT, 1.0),
-				FormFactory.LINE_GAP_ROWSPEC
+				new RowSpec(RowSpec.FILL, Sizes.DEFAULT, 1.0)
 			}));
 
 		//---- mSlider1 ----
@@ -61,11 +62,19 @@ public class MainPanel extends JPanel
 		mSlider1.setMinorTickSpacing(2);
 		mSlider1.setPaintTicks(true);
 		mSlider1.setName("slider1");
-		add(mSlider1, cc.xywh(4, 1, 1, 3));
+		add(mSlider1, cc.xywh(1, 1, 1, 3));
 
-		//---- mGamePanel1 ----
-		mGamePanel1.setName("gamePanel1");
-		add(mGamePanel1, cc.xy(2, 3));
+		//======== mPanel1 ========
+		{
+			mPanel1.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+			mPanel1.setName("panel1");
+			mPanel1.setLayout(new BorderLayout());
+
+			//---- mGamePanel1 ----
+			mGamePanel1.setName("gamePanel1");
+			mPanel1.add(mGamePanel1, BorderLayout.CENTER);
+		}
+		add(mPanel1, cc.xy(3, 3));
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents
 	}
 
@@ -94,6 +103,7 @@ public class MainPanel extends JPanel
 
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
 	private JSlider mSlider1;
+	private JPanel mPanel1;
 	private GamePanel mGamePanel1;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 }

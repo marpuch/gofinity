@@ -29,7 +29,7 @@ public class FramePc extends AbstractAppPc implements SwingXMLBuilder.Backlink {
 
 	private void initFrame() {
 		JFrame frame = getFrame();
-		frame.setSize(400, 400);
+		frame.setSize(800, 600);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.addWindowListener(new WindowAdapter() {
 			@Override

@@ -1,9 +1,12 @@
 package com.googlepages.marpuch.gofinity.gui.cuf.tab.localgame;
 
+import java.awt.CardLayout;
 import java.util.Map;
 
+import javax.swing.JPanel;
 import javax.swing.JSlider;
 
+import com.googlepages.marpuch.gofinity.entity.GameParameters;
 import com.googlepages.marpuch.gofinity.gui.cuf.util.SliderAdapter;
 import com.sdm.util.ui.builder.SwingXMLBuilder;
 import com.sdm.util.ui.fw.Dc;
@@ -31,10 +34,21 @@ public class LocalGamePc extends AbstractDialogPc {
 		new SliderAdapter(getBoardSizeSlider(), dc.getBoardSizeVM());
 	}
 
+	public void startGame(final GameParameters gameParameters) {
+		JPanel panel = getRootPanel();
+		CardLayout layout = (CardLayout) panel.getLayout();
+		layout.next(panel);
+	}
+
 	// //////////////////////////////////////////
 	// CUF getters
 
 	private JSlider getBoardSizeSlider() {
 		return (JSlider) builder.getByShortName("sSize");
+	}
+
+	private JPanel getRootPanel() {
+		JPanel panel = (JPanel) builder.getComponentByAnyName("pGameParameters");
+		return (JPanel) panel.getParent();
 	}
 }

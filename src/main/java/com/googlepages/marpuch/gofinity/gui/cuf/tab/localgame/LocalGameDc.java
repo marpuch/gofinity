@@ -73,7 +73,10 @@ public class LocalGameDc extends TabDialogDc {
 
 	public void startGame(){
 		log.debug("startGame");
-
+		GameParameters gameParameters = getGameParametersVM().getValue().clone();
+		if (log.isDebugEnabled())
+			log.debug(gameParameters.toString());
+		pc.startGame(gameParameters);
 	}
 
 	// //////////////////////////////////////////
