@@ -9,11 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 
 import com.googlepages.marpuch.gofinity.gui.cuf.tab.TabDialogDc;
-import com.googlepages.marpuch.gofinity.gui.widget.ClosableTab;
 import com.sdm.util.ui.builder.SwingXMLBuilder;
 import com.sdm.util.ui.fw.Dc;
 import com.sdm.util.ui.fw2.AbstractAppPc;
-import com.sdm.util.ui.fw2.CloseDialogEvent;
 
 public class FramePc extends AbstractAppPc implements SwingXMLBuilder.Backlink {
 
@@ -58,13 +56,14 @@ public class FramePc extends AbstractAppPc implements SwingXMLBuilder.Backlink {
 		int i = pane.getTabCount();
 		pane.add((Component) dc.getVisualPresentation());
 		pane.setTitleAt(i, dc.getTabName());
-		pane.setTabComponentAt(i, new ClosableTab(pane, new Runnable() {
-
-			@Override
-			public void run() {
-				postAppEvent(new CloseDialogEvent(this, dc));
-			}
-		}));
+		// TODO move this code to the position where this tab is closed
+		// pane.setTabComponentAt(i, new ClosableTab(pane, new Runnable() {
+		//
+		// @Override
+		// public void run() {
+		// postAppEvent(new CloseDialogEvent(this, dc));
+		// }
+		// }));
 	}
 
 	// //////////////////////////////////////////

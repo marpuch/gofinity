@@ -17,5 +17,6 @@
 	<classpathentry kind="lib" path="lib/cuf-1.15.jar" sourcepath="lib/cuf-1.15-sources.jar"/>
 	<classpathentry kind="lib" path="lib/jdom.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="lib/seaglasslookandfeel-0.1.7.4-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
