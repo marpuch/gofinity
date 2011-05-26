@@ -5,3 +5,4 @@ Libraries and what do we need them for:
 - spring* - spring IoC framework
 - cuf - framework for swing
 - jdom - xml parser, needed for cuf
+- seaglasslookandfeel - the cooles look and feel ever

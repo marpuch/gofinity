@@ -56,14 +56,12 @@ public class FramePc extends AbstractAppPc implements SwingXMLBuilder.Backlink {
 		int i = pane.getTabCount();
 		pane.add((Component) dc.getVisualPresentation());
 		pane.setTitleAt(i, dc.getTabName());
-		// TODO move this code to the position where this tab is closed
-		// pane.setTabComponentAt(i, new ClosableTab(pane, new Runnable() {
-		//
-		// @Override
-		// public void run() {
-		// postAppEvent(new CloseDialogEvent(this, dc));
-		// }
-		// }));
+		pane.setSelectedIndex(i);
+	}
+
+	public void removeActiveTab() {
+		JTabbedPane pane = getTabbedPane();
+		pane.remove(pane.getSelectedIndex());
 	}
 
 	// //////////////////////////////////////////

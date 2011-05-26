@@ -17,6 +17,13 @@ public class Main extends AbstractDialogApplication
 {
 	private static final Log log = LoggerFactory.create();
 
+	/**
+	 * Main class of the gofinity project. Run this class with the
+	 * -Dswing.defaultlaf=com.seaglasslookandfeel.SeaGlassLookAndFeel flag set.
+	 * 
+	 * @param args
+	 *            Command line arguments.
+	 */
 	public static void main(final String[] args)
 	{
 		log.debug("Starting gofinity...");
@@ -31,7 +38,7 @@ public class Main extends AbstractDialogApplication
 		Registry.init();
 
 		Map<String, DialogDescription> knownDialogs = DialogDescription
-				.loadKnownDialogs("cuf_main.properties");
+		.loadKnownDialogs("cuf_main.properties");
 		mDialogManager.setKnownDialogs(knownDialogs);
 		mDialogManager.setCallback(new DialogManager.DialogCallback() {
 

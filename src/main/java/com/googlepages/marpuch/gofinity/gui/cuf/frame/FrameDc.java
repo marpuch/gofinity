@@ -65,7 +65,7 @@ public class FrameDc extends AbstractAppDc {
 					final Map<String, Object> pArgs) {
 				if (log.isDebugEnabled())
 					log.debug("Dialog closed: " + pDc.getClass());
-
+				pc.removeActiveTab();
 			}
 		});
 	}
@@ -102,5 +102,6 @@ public class FrameDc extends AbstractAppDc {
 		OpenDialogEvent open = new OpenDialogEvent(this, "LocalGameDc");
 		postAppEvent(open);
 	}
+
 }
 

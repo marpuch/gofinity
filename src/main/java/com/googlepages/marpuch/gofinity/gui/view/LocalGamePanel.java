@@ -1,6 +1,7 @@
 package com.googlepages.marpuch.gofinity.gui.view;
 
 import java.awt.CardLayout;
+import javax.swing.*;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -43,10 +44,21 @@ public class LocalGamePanel extends JPanel {
 		mSSize = new JSlider();
 		mLabel2 = new JLabel();
 		mSHandicap = new JSlider();
+		mLabel9 = new JLabel();
+		mCbKomi = new JComboBox();
 		mLabel3 = new JLabel();
 		mCheckBox1 = new JCheckBox();
 		mLabel4 = new JLabel();
 		mCheckBox2 = new JCheckBox();
+		mSeparator2 = compFactory.createSeparator("Time settings");
+		mLabel5 = new JLabel();
+		mSInitialTime = new JSpinner();
+		mLabel7 = new JLabel();
+		mLabel6 = new JLabel();
+		mSOvertime = new JSpinner();
+		mLabel8 = new JLabel();
+		mPanel1 = new JPanel();
+		mBtnCloseParam = new JButton();
 		mBtnPlay = new JButton();
 		mPGame = new MainPanel();
 		CellConstraints cc = new CellConstraints();
@@ -62,13 +74,23 @@ public class LocalGamePanel extends JPanel {
 				new ColumnSpec[] {
 					FormFactory.DEFAULT_COLSPEC,
 					new ColumnSpec(Sizes.DLUX3),
-					new ColumnSpec("max(default;50dlu):grow")
+					new ColumnSpec("max(min;50dlu)"),
+					new ColumnSpec(Sizes.DLUX3),
+					new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, 1.0)
 				},
 				new RowSpec[] {
 					FormFactory.DEFAULT_ROWSPEC,
 					FormFactory.LINE_GAP_ROWSPEC,
 					FormFactory.DEFAULT_ROWSPEC,
 					FormFactory.LINE_GAP_ROWSPEC,
+					FormFactory.DEFAULT_ROWSPEC,
+					FormFactory.LINE_GAP_ROWSPEC,
+					FormFactory.DEFAULT_ROWSPEC,
+					FormFactory.LINE_GAP_ROWSPEC,
+					FormFactory.DEFAULT_ROWSPEC,
+					FormFactory.LINE_GAP_ROWSPEC,
+					FormFactory.DEFAULT_ROWSPEC,
+					FormFactory.UNRELATED_GAP_ROWSPEC,
 					FormFactory.DEFAULT_ROWSPEC,
 					FormFactory.LINE_GAP_ROWSPEC,
 					FormFactory.DEFAULT_ROWSPEC,
@@ -82,7 +104,7 @@ public class LocalGamePanel extends JPanel {
 
 			//---- mSeparator1 ----
 			mSeparator1.setName("separator1");
-			mPGameParameters.add(mSeparator1, cc.xywh(1, 1, 3, 1));
+			mPGameParameters.add(mSeparator1, cc.xywh(1, 1, 5, 1));
 
 			//---- mLabel1 ----
 			mLabel1.setText("Board size");
@@ -99,7 +121,7 @@ public class LocalGamePanel extends JPanel {
 			mSSize.setMajorTickSpacing(2);
 			mSSize.setSnapToTicks(true);
 			mSSize.setName("sSize");
-			mPGameParameters.add(mSSize, cc.xy(3, 3));
+			mPGameParameters.add(mSSize, cc.xywh(3, 3, 3, 1));
 
 			//---- mLabel2 ----
 			mLabel2.setText("White handicap");
@@ -115,31 +137,99 @@ public class LocalGamePanel extends JPanel {
 			mSHandicap.setValue(0);
 			mSHandicap.setSnapToTicks(true);
 			mSHandicap.setName("sHandicap");
-			mPGameParameters.add(mSHandicap, cc.xy(3, 5));
+			mPGameParameters.add(mSHandicap, cc.xywh(3, 5, 3, 1));
+
+			//---- mLabel9 ----
+			mLabel9.setText("Komi");
+			mLabel9.setName("label9");
+			mPGameParameters.add(mLabel9, cc.xy(1, 7));
+
+			//---- mCbKomi ----
+			mCbKomi.setModel(new DefaultComboBoxModel(new String[] {
+				"0",
+				"0,5",
+				"5,5",
+				"6,5"
+			}));
+			mCbKomi.setSelectedIndex(1);
+			mCbKomi.setName("cbKomi");
+			mPGameParameters.add(mCbKomi, cc.xy(3, 7));
 
 			//---- mLabel3 ----
 			mLabel3.setText("Place handicap automaticaly");
 			mLabel3.setName("label3");
-			mPGameParameters.add(mLabel3, cc.xy(1, 7));
+			mPGameParameters.add(mLabel3, cc.xy(1, 9));
 
 			//---- mCheckBox1 ----
 			mCheckBox1.setName("checkBox1");
-			mPGameParameters.add(mCheckBox1, cc.xy(3, 7));
+			mPGameParameters.add(mCheckBox1, cc.xy(3, 9));
 
 			//---- mLabel4 ----
 			mLabel4.setText("Allow self-atari");
 			mLabel4.setName("label4");
-			mPGameParameters.add(mLabel4, cc.xy(1, 9));
+			mPGameParameters.add(mLabel4, cc.xy(1, 11));
 
 			//---- mCheckBox2 ----
 			mCheckBox2.setName("checkBox2");
-			mPGameParameters.add(mCheckBox2, cc.xy(3, 9));
+			mPGameParameters.add(mCheckBox2, cc.xy(3, 11));
 
-			//---- mBtnPlay ----
-			mBtnPlay.setText("Play");
-			mBtnPlay.setIcon(new ImageIcon(getClass().getResource("/icons/start_game.gif")));
-			mBtnPlay.setName("btnPlay");
-			mPGameParameters.add(mBtnPlay, cc.xy(3, 13, CellConstraints.RIGHT, CellConstraints.DEFAULT));
+			//---- mSeparator2 ----
+			mSeparator2.setName("separator2");
+			mPGameParameters.add(mSeparator2, cc.xywh(1, 13, 5, 1));
+
+			//---- mLabel5 ----
+			mLabel5.setText("Initial time");
+			mLabel5.setName("label5");
+			mPGameParameters.add(mLabel5, cc.xy(1, 15));
+
+			//---- mSInitialTime ----
+			mSInitialTime.setName("sInitialTime");
+			mPGameParameters.add(mSInitialTime, cc.xy(3, 15));
+
+			//---- mLabel7 ----
+			mLabel7.setText("[hh:mm]");
+			mLabel7.setName("label7");
+			mPGameParameters.add(mLabel7, cc.xy(5, 15));
+
+			//---- mLabel6 ----
+			mLabel6.setText("Overtime");
+			mLabel6.setName("label6");
+			mPGameParameters.add(mLabel6, cc.xy(1, 17));
+
+			//---- mSOvertime ----
+			mSOvertime.setName("sOvertime");
+			mPGameParameters.add(mSOvertime, cc.xy(3, 17));
+
+			//---- mLabel8 ----
+			mLabel8.setText("[hh:mm]");
+			mLabel8.setName("label8");
+			mPGameParameters.add(mLabel8, cc.xy(5, 17));
+
+			//======== mPanel1 ========
+			{
+				mPanel1.setName("panel1");
+				mPanel1.setLayout(new FormLayout(
+					new ColumnSpec[] {
+						FormFactory.DEFAULT_COLSPEC,
+						new ColumnSpec(Sizes.DLUX3),
+						FormFactory.DEFAULT_COLSPEC
+					},
+					new RowSpec[] {
+						FormFactory.DEFAULT_ROWSPEC
+					}));
+
+				//---- mBtnCloseParam ----
+				mBtnCloseParam.setText("Close");
+				mBtnCloseParam.setName("btnCloseParam");
+				mPanel1.add(mBtnCloseParam, cc.xy(1, 1));
+
+				//---- mBtnPlay ----
+				mBtnPlay.setText("Play");
+				mBtnPlay.setIcon(new ImageIcon(getClass().getResource("/icons/start_game.gif")));
+				mBtnPlay.setName("btnPlay");
+				mPanel1.add(mBtnPlay, cc.xy(3, 1));
+			}
+			mPGameParameters.add(mPanel1, cc.xy(5, 21, CellConstraints.RIGHT, CellConstraints.DEFAULT));
 		}
 		add(mPGameParameters, "card1");
 
@@ -156,10 +246,21 @@ public class LocalGamePanel extends JPanel {
 	private JSlider mSSize;
 	private JLabel mLabel2;
 	private JSlider mSHandicap;
+	private JLabel mLabel9;
+	private JComboBox mCbKomi;
 	private JLabel mLabel3;
 	private JCheckBox mCheckBox1;
 	private JLabel mLabel4;
 	private JCheckBox mCheckBox2;
+	private JComponent mSeparator2;
+	private JLabel mLabel5;
+	private JSpinner mSInitialTime;
+	private JLabel mLabel7;
+	private JLabel mLabel6;
+	private JSpinner mSOvertime;
+	private JLabel mLabel8;
+	private JPanel mPanel1;
+	private JButton mBtnCloseParam;
 	private JButton mBtnPlay;
 	private MainPanel mPGame;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables

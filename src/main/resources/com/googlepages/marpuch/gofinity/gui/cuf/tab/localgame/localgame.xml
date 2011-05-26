@@ -18,6 +18,7 @@
 
 	<connect>
 		<actionAction source="btnPlay" target="LocalGameDc" method="startGame" />
+		<actionAction source="btnCloseParam" target="LocalGameDc" method="startCloseTab" />
 	</connect>
 
 	<databinding>

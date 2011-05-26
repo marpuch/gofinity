@@ -15,6 +15,7 @@ import com.googlepages.marpuch.gofinity.util.ResourceUtils;
 import com.sdm.util.model.ValueModel;
 import com.sdm.util.ui.builder.SwingXMLBuilder;
 import com.sdm.util.ui.fw.Dc;
+import com.sdm.util.ui.fw2.CloseDialogEvent;
 
 public class LocalGameDc extends TabDialogDc {
 
@@ -22,11 +23,13 @@ public class LocalGameDc extends TabDialogDc {
 
 	@Getter private SwingXMLBuilder builder;
 	private LocalGamePc pc;
+	private Dc parent;
 
 	@Override
 	public void init(final Dc parent, final Map<String, ? super Object> args) {
 		super.init(parent, args);
 		log.debug("init");
+		this.parent = parent;
 		initBuilder();
 		initPc(args);
 		initValueModels();
@@ -77,6 +80,12 @@ public class LocalGameDc extends TabDialogDc {
 		if (log.isDebugEnabled())
 			log.debug(gameParameters.toString());
 		pc.startGame(gameParameters);
+	}
+
+
+	public void startCloseTab() {
+		log.debug("startCloseTab");
+		postAppEvent(new CloseDialogEvent(this, this));
 	}
 
 	// //////////////////////////////////////////
