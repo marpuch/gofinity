@@ -1,13 +1,13 @@
 package com.googlepages.marpuch.gofinity.logic.facade;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import org.apache.commons.logging.Log;
 
 import com.googlepages.marpuch.gofinity.entity.BoardContent;
-import com.googlepages.marpuch.gofinity.entity.FieldContent;
 import com.googlepages.marpuch.gofinity.entity.GameParameters;
-import com.googlepages.marpuch.gofinity.entity.Stone;
+import com.googlepages.marpuch.gofinity.logic.behaviour.GameLogicBA;
 import com.googlepages.marpuch.gofinity.logic.spec.GameLogicBCI;
 import com.googlepages.marpuch.gofinity.util.LoggerFactory;
 
@@ -16,6 +16,7 @@ public class GameLogicBF implements GameLogicBCI {
 	private static final Log log = LoggerFactory.create();
 	@Getter private GameParameters gameParameters;
 	@Getter private BoardContent boardContent;
+	@Setter private GameLogicBA gameLogicBA;
 
 	@Override
 	public void init(final GameParameters gameParameters) {
@@ -26,17 +27,9 @@ public class GameLogicBF implements GameLogicBCI {
 
 	@Override
 	public boolean putStone(final int x, final int y) {
-		log.debug("putStone");
-		if (FieldContent.EMPTY.equals(boardContent.getFieldContent(x, y)))
-		{
-			boardContent.setFieldContent(x, y, Stone.toFieldContent(boardContent.getPlayerToMove()));
-			boardContent.setPlayerToMove(Stone.nextPlayer(boardContent.getPlayerToMove()));
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		if (log.isDebugEnabled())
+			log.debug("putStone x: " + x + " y: " + y);
+		return gameLogicBA.putStone(x, y, gameParameters, boardContent);
 	}
 
 }

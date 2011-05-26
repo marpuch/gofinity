@@ -6,6 +6,13 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 	<bean id="com.googlepages.marpuch.gofinity.logic.spec.GameLogicBCI"
 		class="com.googlepages.marpuch.gofinity.logic.facade.GameLogicBF"
 		scope="prototype">
+		<property name="gameLogicBA"
+			ref="com.googlepages.marpuch.gofinity.logic.behaviour.GameLogicBA">
+		</property>
 	</bean>
 
+	<bean
+		id="com.googlepages.marpuch.gofinity.logic.behaviour.GameLogicBA"
+		class="com.googlepages.marpuch.gofinity.logic.behaviour.impl.GameLogicBAImpl">
+	</bean>
 </beans>
