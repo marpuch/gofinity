@@ -44,12 +44,10 @@ public class LocalGamePanel extends JPanel {
 		mSSize = new JSlider();
 		mLabel2 = new JLabel();
 		mSHandicap = new JSlider();
-		mLabel9 = new JLabel();
-		mCbKomi = new JComboBox();
 		mLabel3 = new JLabel();
 		mCheckBox1 = new JCheckBox();
-		mLabel4 = new JLabel();
-		mCheckBox2 = new JCheckBox();
+		mLabel9 = new JLabel();
+		mCbKomi = new JComboBox();
 		mSeparator2 = compFactory.createSeparator("Time settings");
 		mLabel5 = new JLabel();
 		mSInitialTime = new JSpinner();
@@ -79,8 +77,6 @@ public class LocalGamePanel extends JPanel {
 					new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, 1.0)
 				},
 				new RowSpec[] {
-					FormFactory.DEFAULT_ROWSPEC,
-					FormFactory.LINE_GAP_ROWSPEC,
 					FormFactory.DEFAULT_ROWSPEC,
 					FormFactory.LINE_GAP_ROWSPEC,
 					FormFactory.DEFAULT_ROWSPEC,
@@ -139,10 +135,19 @@ public class LocalGamePanel extends JPanel {
 			mSHandicap.setName("sHandicap");
 			mPGameParameters.add(mSHandicap, cc.xywh(3, 5, 3, 1));
 
+			//---- mLabel3 ----
+			mLabel3.setText("Place handicap automaticaly");
+			mLabel3.setName("label3");
+			mPGameParameters.add(mLabel3, cc.xy(1, 7));
+
+			//---- mCheckBox1 ----
+			mCheckBox1.setName("checkBox1");
+			mPGameParameters.add(mCheckBox1, cc.xy(3, 7));
+
 			//---- mLabel9 ----
 			mLabel9.setText("Komi");
 			mLabel9.setName("label9");
-			mPGameParameters.add(mLabel9, cc.xy(1, 7));
+			mPGameParameters.add(mLabel9, cc.xy(1, 9));
 
 			//---- mCbKomi ----
 			mCbKomi.setModel(new DefaultComboBoxModel(new String[] {
@@ -153,57 +158,39 @@ public class LocalGamePanel extends JPanel {
 			}));
 			mCbKomi.setSelectedIndex(1);
 			mCbKomi.setName("cbKomi");
-			mPGameParameters.add(mCbKomi, cc.xy(3, 7));
-
-			//---- mLabel3 ----
-			mLabel3.setText("Place handicap automaticaly");
-			mLabel3.setName("label3");
-			mPGameParameters.add(mLabel3, cc.xy(1, 9));
-
-			//---- mCheckBox1 ----
-			mCheckBox1.setName("checkBox1");
-			mPGameParameters.add(mCheckBox1, cc.xy(3, 9));
-
-			//---- mLabel4 ----
-			mLabel4.setText("Allow self-atari");
-			mLabel4.setName("label4");
-			mPGameParameters.add(mLabel4, cc.xy(1, 11));
-
-			//---- mCheckBox2 ----
-			mCheckBox2.setName("checkBox2");
-			mPGameParameters.add(mCheckBox2, cc.xy(3, 11));
+			mPGameParameters.add(mCbKomi, cc.xy(3, 9));
 
 			//---- mSeparator2 ----
 			mSeparator2.setName("separator2");
-			mPGameParameters.add(mSeparator2, cc.xywh(1, 13, 5, 1));
+			mPGameParameters.add(mSeparator2, cc.xywh(1, 11, 5, 1));
 
 			//---- mLabel5 ----
 			mLabel5.setText("Initial time");
 			mLabel5.setName("label5");
-			mPGameParameters.add(mLabel5, cc.xy(1, 15));
+			mPGameParameters.add(mLabel5, cc.xy(1, 13));
 
 			//---- mSInitialTime ----
 			mSInitialTime.setName("sInitialTime");
-			mPGameParameters.add(mSInitialTime, cc.xy(3, 15));
+			mPGameParameters.add(mSInitialTime, cc.xy(3, 13));
 
 			//---- mLabel7 ----
 			mLabel7.setText("[hh:mm]");
 			mLabel7.setName("label7");
-			mPGameParameters.add(mLabel7, cc.xy(5, 15));
+			mPGameParameters.add(mLabel7, cc.xy(5, 13));
 
 			//---- mLabel6 ----
 			mLabel6.setText("Overtime");
 			mLabel6.setName("label6");
-			mPGameParameters.add(mLabel6, cc.xy(1, 17));
+			mPGameParameters.add(mLabel6, cc.xy(1, 15));
 
 			//---- mSOvertime ----
 			mSOvertime.setName("sOvertime");
-			mPGameParameters.add(mSOvertime, cc.xy(3, 17));
+			mPGameParameters.add(mSOvertime, cc.xy(3, 15));
 
 			//---- mLabel8 ----
 			mLabel8.setText("[hh:mm]");
 			mLabel8.setName("label8");
-			mPGameParameters.add(mLabel8, cc.xy(5, 17));
+			mPGameParameters.add(mLabel8, cc.xy(5, 15));
 
 			//======== mPanel1 ========
 			{
@@ -220,16 +207,18 @@ public class LocalGamePanel extends JPanel {
 
 				//---- mBtnCloseParam ----
 				mBtnCloseParam.setText("Close");
+				mBtnCloseParam.setMnemonic('C');
 				mBtnCloseParam.setName("btnCloseParam");
 				mPanel1.add(mBtnCloseParam, cc.xy(1, 1));
 
 				//---- mBtnPlay ----
 				mBtnPlay.setText("Play");
 				mBtnPlay.setIcon(new ImageIcon(getClass().getResource("/icons/start_game.gif")));
+				mBtnPlay.setMnemonic('P');
 				mBtnPlay.setName("btnPlay");
 				mPanel1.add(mBtnPlay, cc.xy(3, 1));
 			}
-			mPGameParameters.add(mPanel1, cc.xy(5, 21, CellConstraints.RIGHT, CellConstraints.DEFAULT));
+			mPGameParameters.add(mPanel1, cc.xy(5, 19, CellConstraints.RIGHT, CellConstraints.DEFAULT));
 		}
 		add(mPGameParameters, "card1");
 
@@ -246,12 +235,10 @@ public class LocalGamePanel extends JPanel {
 	private JSlider mSSize;
 	private JLabel mLabel2;
 	private JSlider mSHandicap;
-	private JLabel mLabel9;
-	private JComboBox mCbKomi;
 	private JLabel mLabel3;
 	private JCheckBox mCheckBox1;
-	private JLabel mLabel4;
-	private JCheckBox mCheckBox2;
+	private JLabel mLabel9;
+	private JComboBox mCbKomi;
 	private JComponent mSeparator2;
 	private JLabel mLabel5;
 	private JSpinner mSInitialTime;

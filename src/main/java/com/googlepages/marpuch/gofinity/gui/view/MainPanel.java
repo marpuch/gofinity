@@ -66,6 +66,9 @@ public class MainPanel extends JPanel
 		mLWhiteTime = new JLabel();
 		mLabel12 = new JLabel();
 		mPanel3 = new JPanel();
+		mButton1 = new JButton();
+		mButton2 = new JButton();
+		mButton3 = new JButton();
 		CellConstraints cc = new CellConstraints();
 
 		//======== this ========
@@ -81,7 +84,9 @@ public class MainPanel extends JPanel
 			},
 			new RowSpec[] {
 				FormFactory.DEFAULT_ROWSPEC,
-				new RowSpec(RowSpec.FILL, Sizes.DEFAULT, 1.0)
+				new RowSpec(RowSpec.FILL, Sizes.DEFAULT, 1.0),
+				FormFactory.LINE_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC
 			}));
 
 		//---- mSlider1 ----
@@ -93,7 +98,7 @@ public class MainPanel extends JPanel
 		mSlider1.setMinorTickSpacing(2);
 		mSlider1.setPaintTicks(true);
 		mSlider1.setName("slider1");
-		add(mSlider1, cc.xywh(1, 1, 1, 2));
+		add(mSlider1, cc.xywh(1, 1, 1, 4));
 
 		//======== mPanel1 ========
 		{
@@ -105,7 +110,7 @@ public class MainPanel extends JPanel
 			mGamePanel1.setName("gamePanel1");
 			mPanel1.add(mGamePanel1, BorderLayout.CENTER);
 		}
-		add(mPanel1, cc.xywh(3, 1, 1, 2));
+		add(mPanel1, cc.xywh(3, 1, 1, 4));
 
 		//======== mPanel2 ========
 		{
@@ -121,8 +126,6 @@ public class MainPanel extends JPanel
 					FormFactory.DEFAULT_COLSPEC
 				},
 				new RowSpec[] {
-					FormFactory.DEFAULT_ROWSPEC,
-					FormFactory.LINE_GAP_ROWSPEC,
 					FormFactory.DEFAULT_ROWSPEC,
 					FormFactory.LINE_GAP_ROWSPEC,
 					FormFactory.DEFAULT_ROWSPEC,
@@ -202,23 +205,42 @@ public class MainPanel extends JPanel
 
 		//======== mPanel3 ========
 		{
-			mPanel3.setBorder(new TitledBorder("test"));
 			mPanel3.setName("panel3");
 			mPanel3.setLayout(new FormLayout(
 				new ColumnSpec[] {
 					FormFactory.DEFAULT_COLSPEC,
 					new ColumnSpec(Sizes.DLUX3),
+					FormFactory.DEFAULT_COLSPEC,
+					new ColumnSpec(Sizes.DLUX3),
+					new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, 1.0),
+					new ColumnSpec(Sizes.DLUX3),
 					FormFactory.DEFAULT_COLSPEC
 				},
 				new RowSpec[] {
-					FormFactory.DEFAULT_ROWSPEC,
-					FormFactory.LINE_GAP_ROWSPEC,
-					FormFactory.DEFAULT_ROWSPEC,
-					FormFactory.LINE_GAP_ROWSPEC,
 					FormFactory.DEFAULT_ROWSPEC
 				}));
+
+			//---- mButton1 ----
+			mButton1.setText("Pass");
+			mButton1.setMnemonic('P');
+			mButton1.setIcon(new ImageIcon(getClass().getResource("/icons/pass.gif")));
+			mButton1.setName("button1");
+			mPanel3.add(mButton1, cc.xy(1, 1));
+
+			//---- mButton2 ----
+			mButton2.setText("Resign");
+			mButton2.setMnemonic('R');
+			mButton2.setIcon(new ImageIcon(getClass().getResource("/icons/resign.gif")));
+			mButton2.setName("button2");
+			mPanel3.add(mButton2, cc.xy(3, 1));
+
+			//---- mButton3 ----
+			mButton3.setText("Quit");
+			mButton3.setMnemonic('Q');
+			mButton3.setName("button3");
+			mPanel3.add(mButton3, cc.xy(7, 1));
 		}
-		add(mPanel3, cc.xy(5, 2));
+		add(mPanel3, cc.xy(5, 4));
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents
 	}
 
@@ -264,5 +286,8 @@ public class MainPanel extends JPanel
 	private JLabel mLWhiteTime;
 	private JLabel mLabel12;
 	private JPanel mPanel3;
+	private JButton mButton1;
+	private JButton mButton2;
+	private JButton mButton3;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 }
