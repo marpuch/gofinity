@@ -14,15 +14,8 @@ public class SingleBoard extends AbstractBoardImage {
 
 	public void drawBoard()
 	{
-		drawBackground();
 		drawLines();
 		drawStones();
-	}
-
-	private void drawBackground() {
-		// TODO localize me
-		graphics.setColor(Color.lightGray);
-		graphics.fillRect(0, 0, boardImage.getWidth(), boardImage.getHeight());
 	}
 
 	private void drawLines() {

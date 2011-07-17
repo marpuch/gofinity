@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.image.ImageObserver;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import com.googlepages.marpuch.gofinity.gui.images.AbstractBoardImage;
@@ -20,6 +21,7 @@ public class GamePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
+	private ImageIcon gobanWood = new ImageIcon(getClass().getResource("/icons/board.jpg"));
 	private SingleBoard singleBoard;
 	private OverBoardMarkings overBoardMarkings;
 	private GameLogicBCI gameLogic;
@@ -43,8 +45,19 @@ public class GamePanel extends JPanel {
 	}
 
 	private void drawBoards(final Graphics2D g) {
+		drawGobanWood(g);
 		drawBoard(g, singleBoard);
 		drawBoard(g, overBoardMarkings);
+	}
+
+	private void drawGobanWood(Graphics2D g) {
+		Dimension panelSize = getSize();
+		Dimension singleBoardSize = new Dimension(gobanWood.getIconWidth(), gobanWood.getIconHeight());
+		for (int x = 0; x < panelSize.width; x += singleBoardSize.width) {
+			for (int y = 0; y < panelSize.height; y += singleBoardSize.height) {
+				g.drawImage(gobanWood.getImage(), x, y, singleBoardSize.width, singleBoardSize.height, (ImageObserver) null);
+			}
+		}
 	}
 
 	private void drawBoard(final Graphics2D g, final AbstractBoardImage boardImage) {
