@@ -4,10 +4,13 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Composite;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+
+import javax.swing.ImageIcon;
 
 import lombok.Getter;
 
@@ -18,6 +21,9 @@ import com.googlepages.marpuch.gofinity.logic.spec.GameLogicBCI;
 
 public class AbstractBoardImage {
 
+	private static final ImageIcon blackStoneFull = new ImageIcon(AbstractBoardImage.class.getResource("/icons/black64.png"));
+	private static final ImageIcon whiteStoneFull = new ImageIcon(AbstractBoardImage.class.getResource("/icons/white64.png"));
+
 	@Getter protected final BufferedImage boardImage;
 	protected final Graphics2D graphics;
 	protected final BoardContent boardContent;
@@ -25,6 +31,8 @@ public class AbstractBoardImage {
 	protected final int imageSize;
 	protected final GameParameters gameParameters;
 	protected final int radius;
+	protected final Image blackStoneScaled;
+	protected final Image whiteStoneScaled;
 
 	public AbstractBoardImage(final GameLogicBCI gameLogic, final int singleFieldSize) {
 		super();
@@ -39,6 +47,8 @@ public class AbstractBoardImage {
 				RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 		graphics.setRenderingHint(RenderingHints.KEY_RENDERING,
 				RenderingHints.VALUE_RENDER_QUALITY);
+		blackStoneScaled = blackStoneFull.getImage().getScaledInstance(radius, radius, Image.SCALE_SMOOTH);
+		whiteStoneScaled = whiteStoneFull.getImage().getScaledInstance(radius, radius, Image.SCALE_SMOOTH);
 	}
 
 	/**
@@ -59,18 +69,11 @@ public class AbstractBoardImage {
 			final FieldContent fieldContent) {
 		if (FieldContent.WHITE.equals(fieldContent))
 		{
-			// TODO localize
-			graphics.setColor(Color.white);
-			graphics.fillOval(xCoordinate, yCoordinate, radius, radius);
-			// TODO localize
-			graphics.setColor(Color.black);
-			graphics.drawOval(xCoordinate, yCoordinate, radius, radius);
+			graphics.drawImage(whiteStoneScaled, xCoordinate, yCoordinate, radius, radius, null);
 		}
 		else
 		{
-			// TODO localize
-			graphics.setColor(Color.black);
-			graphics.fillOval(xCoordinate, yCoordinate, radius, radius);
+			graphics.drawImage(blackStoneScaled, xCoordinate, yCoordinate, radius, radius, null);
 		}
 	}
 
